@@ -1,63 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, SafeAreaView,TouchableOpacity } from 'react-native';
-import { Avatar,Input } from 'react-native-elements';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function Login() {
+/* Importando as Telas */
+import TelaLogin from './telas/telaLogin';
+import TelaCadastro from './telas/telaCadastro';
+import TelaEsqueciSenha from './telas/telaEsqueciSenha';
+
+const Stack = createStackNavigator();
+
+export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Avatar
-        rounded
-        size="xlarge"
-        title="MJ"
-        source={{
-          uri:
-            'https://avatars.githubusercontent.com/u/169060996?v=4',
-        }}
-      />
-      <Input
-        placeholder='Email'
-        style={styles.input}
-      />
-      <Input
-        placeholder='Senha'
-      />
-      <TouchableOpacity style={styles.botao_1}>
-        <Text style={styles.texto}>Logar</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.botao_2}>
-        <Text style={styles.texto}>Cadastre-se</Text>
-      </TouchableOpacity>
-      <Text>esqueceu a senha</Text>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={TelaLogin} />
+        <Stack.Screen name="Cadastro" component={TelaCadastro} />
+        <Stack.Screen name="EsqueciSenha" component={TelaEsqueciSenha} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  botao_1:{
-    backgroundColor:'green',
-    marginTop:10,
-    paddingVertical:10,
-    paddingHorizontal:44,
-    borderRadius:10,
-  },
-  botao_2:{
-    backgroundColor:'green',
-    marginTop:10,
-    paddingVertical:10,
-    paddingHorizontal:15,
-    borderRadius:10,
-  },
-  texto:{
-    color:'white',
-    fontWeight:'bold',
-    fontSize:20,
-  },
-});
