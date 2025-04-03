@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   inputContainer: {
-    width: '80%',
+    width: '70%',
     alignSelf: 'center',
   },
 });
